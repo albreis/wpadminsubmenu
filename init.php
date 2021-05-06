@@ -7,11 +7,6 @@ add_action('admin_init', function() use ($plugin_name, $component, $component_na
     register_setting("{$plugin_name}_settings", "{$plugin_name}_{$component}_instalado", []);
 });
 
-add_action("wp_ajax_{$plugin_name}_update_settings", function() use ($plugin_name, $component, $component_name){
-    $data = json_decode(file_get_contents('php://input'));
-    wp_send_json(update_option($data->key, $data->value));
-});
-
 add_action('admin_menu', function() use ($plugin_name, $component, $component_name){
     /**
      * Menu de configurações
